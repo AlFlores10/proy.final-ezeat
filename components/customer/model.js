@@ -4,25 +4,31 @@ const CustomerSchema = new mongoose.Schema({
 
     firstname: { 
         type: String,
-        required: true
+        required: true,
+        maxlength: 30
     },
     lastname: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 30
     },
     email: {
         type: Email,
         required: true,
-        unique: true
+        unique: true,
+        maxlength: 50
     },
     password: { 
         type: String, 
-        required: true
+        required: true,
+        minlength: 7,
+        maxlength: 15
     },
     role: {
         type: String,
         default: 'user',
-        enum: ['user', 'admin']      //Solo permitimos crear usuarios con rol "user"
+        enum: ['user', 'admin'],
+        maxlength: 5      //Solo permitimos crear usuarios con rol "user"
     }
 });
 
