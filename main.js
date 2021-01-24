@@ -37,8 +37,4 @@ app.listen(PORT, ()=> {                                            // Iniciando 
 
 
 // Customer Request
-app.get     ('/');                                                 // Peticion pagina principal
-app.post    ('/signup', routeCustomer);                            // Nuevo customer
-app.get     ('/customers/:email', routeCustomer);                  // Busca customer por email
-app.patch   ('/customers', routeCustomer);                         // Modifica contraseña por _id
-app.delete  ('/customers', routeCustomer);                         // Elimina customer por _id
+app.use     ('/', routeCustomer);                                  // RouteCustomers

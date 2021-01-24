@@ -13,7 +13,7 @@ const CustomerSchema = new mongoose.Schema({
         maxlength: 30
     },
     email: {
-        type: Email,
+        type: String,
         required: true,
         unique: true,
         maxlength: 50
@@ -22,13 +22,13 @@ const CustomerSchema = new mongoose.Schema({
         type: String, 
         required: true,
         minlength: 7,
-        maxlength: 15
+        maxlength: 100
     },
     role: {
         type: String,
-        default: 'user',
-        enum: ['user', 'admin'],
-        maxlength: 5      //Solo permitimos crear usuarios con rol "user"
+        default: 'customer',
+        enum: ['customer'],
+        maxlength: 8
     }
 });
 

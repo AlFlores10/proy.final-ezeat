@@ -2,7 +2,7 @@ const Customer = require('./model.js');
 const bcrypt = require('bcryptjs');
 
 
-module.exports.getAllCustomer = async (req, res) => {      // Muestra todos los usuarios registrados
+module.exports.getAllCustomer = async (req, res) => {                           // Muestra todos los customer registrados
     try {
         const dataCustomer = await Customer.find();
         res.status(200).json(dataCustomer);
@@ -15,15 +15,16 @@ module.exports.getAllCustomer = async (req, res) => {      // Muestra todos los 
 };
 
 
-module.exports.findCustomer = async (req, res) => { // Buscar usuario registrado por email
+module.exports.findCustomer = async (req, res) => {                             // Buscar customer registrado por email
     try {
-        const nameCustomer = await Customer.find({ name: req.params.email });
+        const nameCustomer = await Customer.findOne({ email: req.params });
         res.status(200).json({
             message: "Result found",
             firstname: nameCustomer.firstname,
             lastname: nameCustomer.lastname,
             email: nameCustomer.email,
             role: nameCustomer.role
+            
         });
     }
     catch (error) {
@@ -34,9 +35,8 @@ module.exports.findCustomer = async (req, res) => { // Buscar usuario registrado
 };
 
 
-module.exports.updateCustomer = async (req, res) => {   // Modificar password customer por ID
+module.exports.updateCustomer = async (req, res) => {                           // Modificar password customer por _id
     try {
-        // const modifyCustomer = await Customer.findById(req.body._id);
         const modifyCustomer = await Customer.findOne({ _id: req.body._id });
         req.body.password = bcrypt.hashSync(req.body.password, 10);
 
@@ -56,13 +56,13 @@ module.exports.updateCustomer = async (req, res) => {   // Modificar password cu
 };
 
 
-module.exports.postCustomer = async (req, res) => {     // Crear nuevo customer
+module.exports.postCustomer = async (req, res) => {                             // Crear nuevo customer
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     const { firstname, lastname, email, password } = req.body;
     try {
         const newCustomer = new Customer({ firstname, lastname, email, password });
         await newCustomer.save();
-        res.status(200).json({
+        res.status(201).json({
             message: "Customer created successfully",
             firstname: newCustomer.firstname,
             lastname: newCustomer.lastname,
@@ -78,10 +78,9 @@ module.exports.postCustomer = async (req, res) => {     // Crear nuevo customer
 };
 
 
-module.exports.deleteCustomer = async (req, res) => { // Borrar customer por _id
+module.exports.deleteCustomer = async (req, res) => {                           // Borrar customer por _id
     try {
-        // const borraCustomer = await Customer.deleteOne(req.query.id);
-        const borraCustomer = await Customer.findByIdAndRemove(req.query._id);
+        const borraCustomer = await Customer.findByIdAndDelete(req.params);
         res.status(200).json({
             message: `Customer ${borraCustomer.email} deleted successfully`, 
         });
