@@ -27,6 +27,12 @@ const RestaurantSchema = new mongoose.Schema({
     delivery: {
         type: Boolean,
         required: true
+    },
+    role: {
+        type: String,
+        default: 'restaurant',
+        enum: ['restaurant'],
+        maxlength: 10
     }
 });
 
