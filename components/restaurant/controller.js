@@ -17,7 +17,7 @@ module.exports.getAllRestaurant = async (req, res) => {                         
 
 module.exports.findRestaurant = async (req, res) => {                             // Buscar restaurante por name
     try {
-        const nameRestaurant = await Restaurant.findOne({ name: req.params });
+        const nameRestaurant = await Restaurant.findOne({ name: req.params.name });
         res.status(200).json({
             message: "Result found",
             name: nameRestaurant.name,
@@ -84,7 +84,7 @@ module.exports.postRestaurant = async (req, res) => {                           
 
 module.exports.deleteRestaurant = async (req, res) => {                           // Borrar restaurante por _id
     try {
-        const borraRestaurant = await Restaurant.findByIdAndDelete(req.params);
+        const borraRestaurant = await Restaurant.findByIdAndDelete({ _id: req.params._id});
         res.status(200).json({
             message: `Restaurant ${borraRestaurant.email} deleted successfully`, 
         });

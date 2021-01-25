@@ -17,7 +17,7 @@ module.exports.getAllCustomer = async (req, res) => {                           
 
 module.exports.findCustomer = async (req, res) => {                             // Buscar customer registrado por email
     try {
-        const nameCustomer = await Customer.findOne({ email: req.params });
+        const nameCustomer = await Customer.findOne({ email: req.params.email });
         res.status(200).json({
             message: "Result found",
             firstname: nameCustomer.firstname,
@@ -80,7 +80,7 @@ module.exports.postCustomer = async (req, res) => {                             
 
 module.exports.deleteCustomer = async (req, res) => {                           // Borrar customer por _id
     try {
-        const borraCustomer = await Customer.findByIdAndDelete(req.params);
+        const borraCustomer = await Customer.findByIdAndDelete({ _id: req.params._id});
         res.status(200).json({
             message: `Customer ${borraCustomer.email} deleted successfully`, 
         });
