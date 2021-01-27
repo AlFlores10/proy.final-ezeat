@@ -9,10 +9,10 @@ const moment = require('moment');
 module.exports.loginUser = async (req, res, next) => {
     try {
         let user = '';
-        if (req.body.role = 'customer') {
+        if (req.body.role === 'customer') {
             user = await Customer.findOne({ email: req.body.email });
         };
-        if (req.body.role = 'restaurant') {
+        if (req.body.role === 'restaurant') {
             user = await Restaurant.findOne({ email: req.body.email });
         };
         if (user) {

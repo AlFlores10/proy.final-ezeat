@@ -1,5 +1,4 @@
 // Imports
-
 const express = require('express');                                    // Importa Express
 const cors = require('cors');                                          // Importa Cors
 const app = express();                                                 // Instancia Express
@@ -31,16 +30,32 @@ useFindAndModify: false
 // Middlewares
 app.use(cors());                                                       // Instancia Cors
 app.use(express.json());                                               // Instancia BodyParser
-
+const login = require ('./components/config/config');                  // Importa Login middleware
+const auth = require ('./components/config/auth');                     // Importa Auth middleware
+const middleIndex = (req, res, next)=> {                               // Middleware Index
+    res.json({
+        message: "proy.Final-Ezeat Version 1.0.0"
+    });
+    next();
+};
 
 // Node Server Connection
 app.listen(PORT, ()=> {                                                // Iniciando servidor Node
     console.log('Server running on port '+ PORT);
 });
 
+// Index & Login Request
+app.get     ('/', middleIndex);                                        // RouteIndex
+app.post    ('/login', login.loginUser);                               // RouteLogin
 
 // Customer Request
 app.use     ('/customer', routeCustomer);                              // RouteCustomers
+
+// Restaurant Request
 app.use     ('/restaurant', routeRestaurant);                          // RouteRestaurants
+
+// Menu Request
 app.use     ('/menu', routeMenu);                                      // RouteMenu
-app.use     ('/order', routeOrder);                                    // RouteOrder
+
+// Order Request
+app.use     ('/order', auth.checkToken, routeOrder);                   // RouteOrder
