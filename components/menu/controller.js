@@ -35,8 +35,12 @@ module.exports.findMenu = async (req, res) => {                             // B
 module.exports.updateMenu = async (req, res) => {                           // Modificar atributos menu por _id
     try {
         const modifyMenu = await Menu.findOne({ _id: req.body._id });
-        modifyMenu.name = req.body.name;
-        modifyMenu.ingredient = req.body.ingredient;
+        if(req.body.name){ 
+            modifyMenu.name = req.body.name;
+        };
+        if(req.body.ingredient) { 
+            modifyMenu.ingredient = req.body.ingredient; 
+        };
 
         await modifyMenu.save();
         res.status(200).json({

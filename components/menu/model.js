@@ -11,11 +11,11 @@ const MenuSchema = new mongoose.Schema({
         required: true,
         maxlength: 30
     },
-    ingredient: {
+    ingredient: [{
         type: String,
         required: true,
         maxlength: 100
-    }
+    }]
 });
 
 

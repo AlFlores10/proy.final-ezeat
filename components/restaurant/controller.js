@@ -38,12 +38,19 @@ module.exports.findRestaurant = async (req, res) => {                           
 module.exports.updateRestaurant = async (req, res) => {                           // Modificar atributos restaurante por _id
     try {
         const modifyRestaurant = await Restaurant.findOne({ _id: req.body._id });
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-        modifyRestaurant.password = req.body.password;
-        modifyRestaurant.name = req.body.name;
-        modifyRestaurant.adress = req.body.adress;
-        modifyRestaurant.delivery = req.body.delivery;
-
+        if(req.body.password){ 
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            modifyRestaurant.password = req.body.password;
+        };
+        if(req.body.name){ 
+            modifyRestaurant.name = req.body.name;
+        };
+        if(req.body.adress){ 
+            modifyRestaurant.adress = req.body.adress;
+        };
+        if(req.body.delivery){ 
+            modifyRestaurant.delivery = req.body.delivery;
+        };
         await modifyRestaurant.save();
         res.status(200).json({
             message: `Restaurant ${modifyRestaurant.email} updated successfully`
