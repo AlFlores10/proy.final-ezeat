@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;                                 // Define
 const routeCustomer = require('./components/customer/router.js');      // Importa customer/router.js
 const routeRestaurant = require('./components/restaurant/router.js');  // Importa restaurant/router.js
 const routeMenu = require('./components/menu/router.js');              // Importa menu/router.js
+const routeOrder = require('./components/order/router.js');            // Importa order/router.js
 
 
 // DB Connection
@@ -42,3 +43,4 @@ app.listen(PORT, ()=> {                                                // Inicia
 app.use     ('/customer', routeCustomer);                              // RouteCustomers
 app.use     ('/restaurant', routeRestaurant);                          // RouteRestaurants
 app.use     ('/menu', routeMenu);                                      // RouteMenu
+app.use     ('/order', routeOrder);                                    // RouteOrder
