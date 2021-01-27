@@ -1,5 +1,4 @@
 const Menu = require('./model.js');
-const bcrypt = require('bcryptjs');
 
 module.exports.getAllMenu = async (req, res) => {                           // Muestra todos los menus registrados
     try {
