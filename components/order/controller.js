@@ -2,10 +2,12 @@ const Order = require('./model.js');
 
 module.exports.getAllOrder = async (req, res) => {                           // Muestra todas los pedidos realizados
     try {
-        const dataOrder = await Order.find();
-        res.status(200).json({
-            message: 'Result found',
-            dataOrder
+        const dataOrder = await Order.find()
+        .populate('customerID')
+        .populate('restaurantID')
+        .populate('menuID')
+        .exec((err, dataOrder) => {        
+            res.status(200).json(dataOrder);
         });
     }
     catch (error) {
