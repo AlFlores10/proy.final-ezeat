@@ -4,8 +4,11 @@ const bcrypt = require('bcryptjs');
 
 module.exports.getAllRestaurant = async (req, res) => {                           // Muestra todos los restaurantes registrados
     try {
-        const dataRestaurant = await Restaurant.find();
-        res.status(200).json(dataRestaurant);
+        const dataRestaurant = await Restaurant.find()
+        .populate('menuID')
+        .exec((err, dataRestaurant) => {        
+            res.status(200).json(dataRestaurant);
+        });
     }
     catch (error) {
         res.status(500).json({
@@ -50,6 +53,9 @@ module.exports.updateRestaurant = async (req, res) => {                         
         };
         if(req.body.delivery){ 
             modifyRestaurant.delivery = req.body.delivery;
+        };
+        if(req.body.menuID){ 
+            modifyRestaurant.menuID = req.body.menuID;
         };
         await modifyRestaurant.save();
         res.status(200).json({

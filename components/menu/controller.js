@@ -2,8 +2,11 @@ const Menu = require('./model.js');
 
 module.exports.getAllMenu = async (req, res) => {                           // Muestra todos los menus registrados
     try {
-        const dataMenu = await Menu.find();
-        res.status(200).json(dataMenu);
+        const dataMenu = await Menu.find()
+        .populate('restaurantID')
+        .exec((err, dataMenu) => {        
+            res.status(200).json(dataMenu);
+        });
     }
     catch (error) {
         res.status(500).json({

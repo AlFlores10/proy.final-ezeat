@@ -33,7 +33,11 @@ const RestaurantSchema = new mongoose.Schema({
         default: 'restaurant',
         enum: ['restaurant'],
         maxlength: 10
-    }
+    },
+    menuID: [{ 
+        type: mongoose.ObjectId, ref: 'Menu',
+        required: false
+    }],
 });
 
 

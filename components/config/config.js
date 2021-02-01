@@ -18,7 +18,10 @@ module.exports.loginUser = async (req, res, next) => {
         if (user) {
             const iguales = bcrypt.compareSync(req.body.password, user.password);
             if (iguales) {
-                res.json({ sucess: createToken(user) });
+                res.json({ 
+                    _id: user._id,
+                    role: user.role,
+                    token: createToken(user) });
 
             } else {
                 res.json({ error: 'Error en usuario y/o contraseña' });
