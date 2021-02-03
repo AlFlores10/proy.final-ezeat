@@ -14,7 +14,7 @@ const routeOrder = require('./components/order/router.js');            // Import
 
 // DB Connection
 const mongoose = require('mongoose');                                  // Importa ORM Mongoose
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/db-ezeat';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/db-ezeat';
 
 mongoose.connect( MONGO_URI, {                                         // Crea la conexion con la DB
 useNewUrlParser: true,
