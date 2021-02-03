@@ -77,15 +77,16 @@ module.exports.updateRestaurant = async (req, res) => {                         
 
 module.exports.postRestaurant = async (req, res) => {                             // Crear nuevo restaurante
     req.body.password = bcrypt.hashSync(req.body.password, 10);
-    const { name, email, password, adress } = req.body;
+    const { name, email, password, adress, image } = req.body;
     try {
-        const newRestaurant = new Restaurant({ name, email, password, adress });
+        const newRestaurant = new Restaurant({ name, email, password, adress, image });
         await newRestaurant.save();
         res.status(201).json({
             message: "Restaurant created successfully",
             name: newRestaurant.name,
             email: newRestaurant.email,
             adress: newRestaurant.adress,
+            image: newRestaurant.image
         });
 
     } catch (error) {
