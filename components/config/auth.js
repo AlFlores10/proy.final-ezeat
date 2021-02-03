@@ -4,12 +4,12 @@ const secret = 'elsecretodemigato';
 
 module.exports.checkToken = (req, res, next) => {
 
-    if(!req.headers['user-token']) {
+    if(!req.headers['token']) {
 
-        return res.json({ error: 'Necesitas incluir el user-token en la cabecera'});
+        return res.json({ error: 'Necesitas incluir el token en la cabecera'});
     }
 
-    const userToken = req.headers['user-token'];
+    const userToken = req.headers['token'];
     let payload = {};
 
     try {

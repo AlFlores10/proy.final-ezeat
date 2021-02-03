@@ -26,13 +26,17 @@ const RestaurantSchema = new mongoose.Schema({
     },
     delivery: {
         type: Boolean,
-        required: true
+        default: true,
     },
     role: {
         type: String,
         default: 'restaurant',
         enum: ['restaurant'],
         maxlength: 10
+    },
+    image: {
+        type: String,
+        required: false
     },
     menuID: [{ 
         type: mongoose.ObjectId, ref: 'Menu',

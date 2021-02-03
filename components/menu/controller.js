@@ -1,4 +1,6 @@
 const Menu = require('./model.js');
+const Restaurant = require('../restaurant/model.js');
+
 
 module.exports.getAllMenu = async (req, res) => {                           // Muestra todos los menus registrados
     try {
@@ -43,6 +45,9 @@ module.exports.updateMenu = async (req, res) => {                           // M
         if(req.body.ingredient) { 
             modifyMenu.ingredient = req.body.ingredient; 
         };
+        if(req.body.restaurantID) { 
+            modifyMenu.restaurantID = req.body.restaurantID; 
+        };
 
         await modifyMenu.save();
         res.status(200).json({
@@ -62,8 +67,12 @@ module.exports.updateMenu = async (req, res) => {                           // M
 module.exports.postMenu = async (req, res) => {                             // Crear nuevo menu
     const { restaurantID, name, ingredient } = req.body;
     try {
+        const restaurant = await Restaurant.findOne({_id: restaurantID});
         const newMenu = new Menu({ restaurantID, name, ingredient });
         await newMenu.save();
+        console.log(newMenu);
+        restaurant.menuID.push(newMenu._id);
+        await restaurant.save();
         res.status(201).json({
             message: "Menu created successfully",
             restaurantID: newMenu.restaurantID,

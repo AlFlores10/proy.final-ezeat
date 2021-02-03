@@ -17,7 +17,7 @@ module.exports.getAllCustomer = async (req, res) => {                           
 
 module.exports.findCustomer = async (req, res) => {                             // Buscar customer registrado por email
     try {
-        const nameCustomer = await Customer.findOne({ email: req.params.email });
+        const nameCustomer = await Customer.findOne({ _id: req.params._id });
         res.status(200).json({
             message: "Result found",
             firstname: nameCustomer.firstname,

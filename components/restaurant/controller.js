@@ -54,6 +54,9 @@ module.exports.updateRestaurant = async (req, res) => {                         
         if(req.body.delivery){ 
             modifyRestaurant.delivery = req.body.delivery;
         };
+        if(req.body.image){ 
+            modifyRestaurant.image = req.body.image;
+        };
         if(req.body.menuID){ 
             modifyRestaurant.menuID = req.body.menuID;
         };
@@ -74,16 +77,15 @@ module.exports.updateRestaurant = async (req, res) => {                         
 
 module.exports.postRestaurant = async (req, res) => {                             // Crear nuevo restaurante
     req.body.password = bcrypt.hashSync(req.body.password, 10);
-    const { name, email, password, adress, delivery } = req.body;
+    const { name, email, password, adress } = req.body;
     try {
-        const newRestaurant = new Restaurant({ name, email, password, adress, delivery });
+        const newRestaurant = new Restaurant({ name, email, password, adress });
         await newRestaurant.save();
         res.status(201).json({
             message: "Restaurant created successfully",
             name: newRestaurant.name,
             email: newRestaurant.email,
             adress: newRestaurant.adress,
-            delivery: newRestaurant.delivery,
         });
 
     } catch (error) {
