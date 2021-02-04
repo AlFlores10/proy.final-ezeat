@@ -1,4 +1,7 @@
-# proy.final-ezeat-front
+<img src='https://images.meteociel.fr/im/3867/logo_size_lth1.jpg'>
+<a href='https://images.meteociel.fr/im/7404/merchandising_rpu6_kfz9.png'><img src='https://images.meteociel.fr/im/7404/merchandising_rpu6kfz9_mini.png'>
+<a href='https://images.meteociel.fr/im/5414/glass_edx9.png'><img src='https://images.meteociel.fr/im/5414/glassedx9_mini.png'>
+<a href='https://images.meteociel.fr/im/2704/shirt_cml7.png'><img src='https://images.meteociel.fr/im/2704/shirtcml7_mini.png'>
 
 ## Table of Contents
 1. [General Info](#general-info)
