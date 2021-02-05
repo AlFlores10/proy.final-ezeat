@@ -9,7 +9,7 @@ router.get      ('/', auth.checkToken, controller.getAllCustomer);        /// Mu
 router.get      ('/:_id', auth.checkToken, controller.findCustomer);    /// Busca customer registrado por email
 router.post     ('/signup', controller.postCustomer);                     /// Nuevo customer
 router.patch    ('/', auth.checkToken, controller.updateCustomer);        /// Modifica contraseña de customer
-router.delete   (':_id', auth.checkToken, controller.deleteCustomer);     /// Elimina customer
+router.delete   ('/:_id', auth.checkToken, controller.deleteCustomer);     /// Elimina customer
 
 // Exports
 module.exports = router;
