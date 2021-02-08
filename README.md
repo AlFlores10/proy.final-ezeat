@@ -1,7 +1,4 @@
-<img src='https://images.meteociel.fr/im/3867/logo_size_lth1.jpg'>
-<a href='https://images.meteociel.fr/im/7404/merchandising_rpu6_kfz9.png'><img src='https://images.meteociel.fr/im/7404/merchandising_rpu6kfz9_mini.png'>
-<a href='https://images.meteociel.fr/im/5414/glass_edx9.png'><img src='https://images.meteociel.fr/im/5414/glassedx9_mini.png'>
-<a href='https://images.meteociel.fr/im/2704/shirt_cml7.png'><img src='https://images.meteociel.fr/im/2704/shirtcml7_mini.png'>
+<img src='https://images.meteociel.fr/im/3867/logo_size_lth1.jpg'><a href='https://images.meteociel.fr/im/7404/merchandising_rpu6_kfz9.png'><img src='https://images.meteociel.fr/im/7404/merchandising_rpu6kfz9_mini.png'><a href='https://images.meteociel.fr/im/5414/glass_edx9.png'><img src='https://images.meteociel.fr/im/5414/glassedx9_mini.png'><a href='https://images.meteociel.fr/im/2704/shirt_cml7.png'><img src='https://images.meteociel.fr/im/2704/shirtcml7_mini.png'>
 
 ## Table of Contents
 1. [General Info](#general-info)
@@ -12,6 +9,8 @@
 ### General Info
 ***
 App de pedidos de comida a domicilio creado con JavaScript, NodeJS, ExpressJS, MongoDB, Mongoose, Heroku.
+
+<img src='https://images.meteociel.fr/im/7635/bbdd_diagram_ezeat_dny5.png'>
 
 ### Screenshot
 <a target='_blank' href='https://images.meteociel.fr/im/1636/get_customer_isn2.png'><img src='https://images.meteociel.fr/im/1636/get_customerisn2_mini.png'></a>
@@ -63,4 +62,4 @@ Lista de tecnologías utilizadas en el proyecto:
 ***
 > * [Repositorio GitHub](https://github.com/AlFlores10/proy.final-ezeat)
 > * [Heroku](https://proy-final-ezeat.herokuapp.com/)
-> * [Alberto Flores Martínez](https://github.com/AlFlores10)
+> * [LinkdIn](https://www.linkedin.com/in/alflores10/)
